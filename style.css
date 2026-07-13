@@ -1,0 +1,259 @@
+/* 基本スタイル */
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f4f7f9; color: #333; margin: 0; padding: 20px; }
+.main-container { width: 100%; max-width: 1600px; margin: 0 auto; }
+header { background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); margin-bottom: 20px; text-align: center; position: relative; }
+h1 { color: #2c3e50; margin: 0 0 15px 0; }
+h2 { color: #34495e; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; justify-content: center; }
+h3 { color: #34495e; margin-top: 20px; margin-bottom: 10px; }
+.current-time { font-size: 1.6em; font-weight: bold; color: #3498db; background-color: #ecf0f1; padding: 10px; border-radius: 5px; }
+.nav-link { position: absolute; top: 20px; right: 20px; text-decoration: none; background-color: #f0f0f0; color: #333; padding: 8px 15px; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+.nav-link:hover { background-color: #e0e0e0; }
+.content-wrapper { display: flex; flex-direction: column; gap: 20px; }
+@media (min-width: 1024px) { .content-wrapper { flex-direction: row; align-items: flex-start; } }
+.left-column { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+@media (min-width: 1024px) { .left-column { flex-grow: 1; } }
+.right-column { width: 100%; }
+@media (min-width: 1024px) { .right-column { width: 450px; flex-shrink: 0; position: sticky; top: 20px; } }
+.container { background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); width: 100%; box-sizing: border-box; }
+.toggle-container { padding: 10px; }
+#toggle-calendar-btn { width: 100%; padding: 12px; font-size: 1em; font-weight: bold; color: white; background-color: #3498db; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+#toggle-calendar-btn:hover { background-color: #2980b9; }
+.hidden { display: none; }
+#calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+#calendar-header h2 { border-bottom: none; margin: 0; font-size: 1.4em; color: #2c3e50; }
+#calendar-header button { background-color: #3498db; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1em; cursor: pointer; transition: background-color 0.3s; line-height: 30px; }
+#calendar-header button:hover { background-color: #2980b9; }
+#calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.weekday-header { text-align: center; padding: 8px 4px; font-weight: bold; color: #7f8c8d; font-size: 0.8em; }
+.calendar-day { background-color: #f8f9f9; min-height: 65px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position: relative; transition: background-color 0.3s; cursor: pointer; border-radius: 5px; border: 2px solid transparent; padding: 4px; }
+.calendar-day:hover { background-color: #ecfaff; }
+.calendar-day.other-month { color: #bdc3c7; background-color: transparent; cursor: default; }
+.calendar-day.other-month:hover { background-color: transparent; }
+.calendar-day.selected { border-color: #3498db; background-color: #eafaff; }
+.day-number { font-size: 0.9em; font-weight: bold; margin-top: 2px; }
+.calendar-day.today .day-number { background-color: #e74c3c; color: white; border-radius: 50%; width: 22px; height: 22px; line-height: 22px; display: inline-block; }
+.event-dots { margin-top: 4px; display: flex; gap: 3px; }
+.event-dot { width: 6px; height: 6px; border-radius: 50%; }
+.dot-my-schedule { background-color: #3498db; }
+.dot-youtube { background-color: #e74c3c; }
+.dot-youtube-past { background-color: #bdc3c7; }
+.daily-header { display: flex; justify-content: space-between; align-items: center; }
+#daily-my-schedule-view h2, #daily-youtube-view h2 { font-size: 1.4em; border-bottom: none; padding-bottom: 0; margin-bottom: 0; flex-grow: 1; text-align: center; }
+.day-nav-btn { background-color: #95a5a6; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1.2em; font-weight: bold; cursor: pointer; line-height: 28px; transition: background-color 0.3s; flex-shrink: 0; }
+.day-nav-btn:hover { background-color: #7f8c8d; }
+.schedule-list-container { margin-top: 15px; }
+#day-my-schedule-list, #day-youtube-list { list-style: none; padding: 0; }
+.day-schedule-item { padding: 12px; margin-bottom: 8px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+.day-schedule-item.my-schedule { background-color: #ecf0f1; border-left: 4px solid #3498db; }
+.schedule-time { font-weight: bold; margin-right: 10px; }
+.schedule-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.schedule-actions button { padding: 4px 8px; font-size: 0.8em; border: none; color: white; border-radius: 4px; cursor: pointer; }
+.edit-btn { background-color: #2ecc71; }
+.delete-btn { background-color: #e74c3c; }
+.youtube-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e74c3c; margin-bottom: 20px; }
+#daily-youtube-view h2 { border-bottom: none; margin-bottom: 0; padding-bottom: 10px; }
+#refresh-youtube-btn { background: none; border: none; font-size: 1.5em; cursor: pointer; padding: 0 5px; color: #3498db; transition: transform 0.3s ease; }
+#refresh-youtube-btn:hover { transform: rotate(180deg); }
+.day-schedule-item.youtube-schedule { background-color: #fdf2f2; border-left: 4px solid #e74c3c; padding: 8px; align-items: center; cursor: pointer; transition: background-color 0.2s; display: flex; gap: 12px; }
+.day-schedule-item.youtube-schedule:hover { background-color: #fbeee2; }
+.day-schedule-item.youtube-schedule.past-stream { opacity: 0.6; border-left-color: #bdc3c7; background-color: #f8f9f9; }
+.day-schedule-item.youtube-schedule.past-stream:hover { background-color: #f0f2f3; }
+/* .day-schedule-item.youtube-schedule.past-stream .yt-thumbnail { filter: grayscale(80%); } */
+.yt-thumbnail { width: 100px; height: 56px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+.yt-info-wrapper { display: flex; flex-direction: column; flex-grow: 1; overflow: hidden; }
+.yt-info-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px;}
+.live-badge { background-color: #e74c3c; color: white; font-size: 0.7em; font-weight: bold; padding: 2px 5px; border-radius: 3px; line-height: 1; flex-shrink: 0; }
+/* .premiere-badge { background-color: #9b59b6; } */
+.yt-info-header strong { font-size: 0.9em; }
+.yt-title { font-size: 0.95em; line-height: 1.3; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.yt-channel { font-size: 0.8em; color: #7f8c8d; }
+.my-schedule-form h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.schedule-form { display: flex; flex-direction: column; gap: 10px; }
+.schedule-form label { font-weight: bold; font-size: 0.9em; color: #555; margin-bottom: -5px; margin-top: 5px; }
+.schedule-form input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; width: 100%; box-sizing: border-box; }
+.time-inputs { display: flex; gap: 8px; align-items: center; width: 100%; }
+.time-inputs input[type="time"], .time-inputs input[type="date"] { width: auto; flex-grow: 1; }
+.form-buttons { display: flex; gap: 10px; margin-top: 10px; }
+.form-buttons button { flex-grow: 1; padding: 12px; border-radius: 5px; color: #fff; font-size: 1em; cursor: pointer; border: none; }
+#add-btn { background-color: #2ecc71; }
+#add-btn:hover { background-color: #27ae60; }
+#cancel-btn { background-color: #95a5a6; }
+#cancel-btn:hover { background-color: #7f8c8d; }
+.modal { position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+.modal-content { background-color: #fff; margin: 10% auto; padding: 25px; border: 1px solid #888; width: 80%; max-width: 600px; border-radius: 10px; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.close-btn { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close-btn:hover, .close-btn:focus { color: black; text-decoration: none; }
+.modal-thumbnail { width: 100%; max-width: 320px; height: auto; display: block; margin: 0 auto 15px auto; border-radius: 5px; }
+#modal-title { text-align: center; margin-bottom: 15px; }
+#modal-description { white-space: pre-wrap; max-height: 300px; overflow-y: auto; line-height: 1.6; margin-bottom: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+.modal-button { display: block; width: fit-content; margin: 15px auto 0 auto; padding: 10px 20px; background-color: #e74c3c; color: white; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; }
+.modal-button:hover { background-color: #c0392b; }
+
+/* --- 設定画面 --- */
+.settings-area { background-color: #f4f7f9; box-shadow: none; padding: 0; }
+.settings-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
+.settings-header h2 { border-bottom: none; margin: 0; }
+.settings-section { background-color: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); margin-bottom: 20px; }
+.settings-section h3 { margin-top: 0; border-left: 4px solid #3498db; padding-left: 10px; margin-bottom: 15px; }
+.description { font-size: 0.9em; color: #7f8c8d; margin-bottom: 20px; }
+.form-grid { display: grid; grid-template-columns: minmax(150px, 1fr) minmax(200px, 2fr) auto; gap: 10px; margin-bottom: 20px; align-items: center; }
+@media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+.form-grid input { padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9em; box-sizing: border-box; width: 100%; }
+.form-grid .form-buttons { grid-column: 3 / 4; display: flex; gap: 10px; }
+@media (max-width: 768px) { .form-grid .form-buttons { grid-column: 1 / 2; } }
+.form-buttons button { padding: 10px 15px; border: none; color: white; cursor: pointer; border-radius: 5px; font-weight: bold; transition: background-color 0.3s; height: fit-content; flex-grow: 1; font-size: 0.9em; }
+#add-api-key-btn, #add-channel-btn { background-color: #3498db; }
+#add-api-key-btn:hover, #add-channel-btn:hover { background-color: #2980b9; }
+.cancel-edit-btn { background-color: #95a5a6; }
+.cancel-edit-btn:hover { background-color: #7f8c8d; }
+.list-container { margin-top: 10px; }
+
+/* ★★★ グループ分けスタイル ★★★ */
+.add-group-btn {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* フォームとの間隔 */
+    margin-bottom: 10px; /* リストコンテナとの間隔 */
+    transition: background-color 0.3s;
+}
+.add-group-btn:hover { background-color: #16a085; }
+
+.settings-group {
+    border: 1px solid #ecf0f1;
+    border-radius: 8px;
+    margin-top: 20px; /* グループ間の上マージン */
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.settings-group.ungrouped { /* 未分類グループ */
+     border: 1px dashed #bdc3c7; /* 枠線を点線に */
+     box-shadow: none;
+     background: #f9fafb; /* 背景色を少し変える */
+     margin-top: 20px; /* 修正: マージン統一 */
+}
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #ecf0f1;
+    border-bottom: 1px solid #e0e6e8;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    cursor: grab; /* ドラッグ可能を示す */
+}
+.settings-group.ungrouped .group-header {
+    background-color: #e0e6e8;
+    cursor: default; /* 未分類グループはドラッグ不可 */
+    justify-content: flex-start; /* 左寄せ */
+}
+.group-header h3 {
+    margin: 0;
+    padding: 5px;
+    border-left: none;
+    flex-grow: 1;
+    font-size: 1.1em;
+}
+.group-header h3[contenteditable="true"]:focus {
+    background-color: white;
+    outline: 2px solid #3498db;
+    border-radius: 3px;
+    cursor: text;
+}
+.group-header .delete-group-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.group-header .delete-group-btn:hover { background-color: #c0392b; }
+.settings-group.ungrouped .delete-group-btn {
+    display: none;
+}
+span.active-key-display {
+    font-size: 0.8em;
+    color: #7f8c8d;
+    font-weight: normal;
+    margin-left: 15px;
+}
+.settings-group ul.item-list {
+    list-style-type: none;
+    padding: 10px;
+    min-height: 50px; /* ドラッグ＆ドロップのドロップ先として高さを確保 */
+}
+.empty-item {
+    padding: 10px;
+    color: #95a5a6;
+    text-align: center;
+    font-style: italic;
+    user-select: none; /* 選択不可に */
+}
+/* ★★★ ここまで ★★★ */
+
+
+#api-key-list-container li, #channel-list-container li { /* 以前の #api-key-list li から変更 */
+    background-color: #fdfdfd;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+    border: 1px solid #eee;
+}
+#api-key-list-container li:not(.empty-item):hover, 
+#channel-list-container li:not(.empty-item):hover {
+    background-color: #f9f9f9;
+}
+
+/* ★★★ ドラッグ中のスタイル ★★★ */
+li.draggable-item {
+    cursor: move; /* カーソルを移動に */
+}
+li.dragging {
+    opacity: 0.5; /* ドラッグ中アイテムを半透明に */
+    background: #d3eaff; /* 背景色を変更 */
+}
+/* グループドラッグ中のスタイル */
+.settings-group.dragging-group {
+    opacity: 0.7;
+    border: 2px dashed #3498db;
+}
+/* Sortable.js がドロップ先を示すクラス */
+.sortable-ghost {
+    background: #eafaff;
+    border: 2px dashed #3498db;
+    opacity: 0.6;
+}
+
+.key-name, .channel-name { font-weight: bold; color: #2c3e50; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px;}
+.list-buttons { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
+.list-buttons button { padding: 5px 10px; font-size: 0.8em; border: none; color: white; border-radius: 4px; cursor: pointer; }
+
+/* .move-btn スタイルは削除 */
+
+.edit-item-btn { background-color: #f39c12; }
+.edit-item-btn:hover { background-color: #e67e22; }
+.select-key-btn { background-color: #9b59b6; }
+.select-key-btn:hover { background-color: #8e44ad; }
+.select-key-btn.active { background-color: #27ae60; cursor: default; }
+.delete-key-btn, .delete-channel-btn { background-color: #e74c3c; }
+.delete-key-btn:hover, .delete-channel-btn:hover { background-color: #c0392b; }
+
+/* sort-options を削除 */
+.sort-options { display: none; }
