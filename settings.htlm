@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設定 - ライブスケジュール帳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+    <div class="main-container">
+        <header>
+            <h1>設定</h1>
+            <a href="index.html" class="nav-link">スケジュールに戻る</a>
+        </header>
+
+        <div class="settings-area">
+            <div class="settings-header">
+                <img src="https://www.youtube.com/s/desktop/014dbbed/img/favicon_32x32.png" alt="YT">
+                <h2>YouTube連携設定</h2>
+            </div>
+
+            <section class="settings-section">
+                <h3 id="api-key-form-title">APIキーの管理</h3>
+                <p class="description">YouTube APIキーを登録・管理します。アイテムをドラッグ＆ドロップでグループ分け・並び替えできます。</p>
+                <div class="form-grid">
+                    <input type="hidden" id="edit-api-key-id">
+                    <input type="text" id="api-key-name" placeholder="キーの名前 (例: 個人用)">
+                    <input type="password" id="api-key-value" placeholder="APIキーの値を貼り付け">
+                    <div class="form-buttons">
+                        <button id="add-api-key-btn">追加</button>
+                        <button id="cancel-edit-api-key-btn" class="cancel-edit-btn hidden">キャンセル</button>
+                    </div>
+                </div>
+                <button id="add-api-key-group-btn" class="add-group-btn">+ グループを追加</button>
+                
+                <div class="list-container" id="api-key-list-container">
+                    <div class="settings-group ungrouped" data-group-id="ungrouped">
+                        <div class="group-header">
+                            <h3 class="group-name">未分類のAPIキー</h3>
+                            <span class="active-key-display">(使用中: <span id="active-key-name">なし</span>)</span>
+                        </div>
+                        <ul class="item-list api-key-item-list" data-group-id="ungrouped">
+                            </ul>
+                    </div>
+                    </div>
+            </section>
+
+            <section class="settings-section">
+                <h3 id="channel-form-title">チャンネルの管理</h3>
+                <p class="description">予定をチェックしたいYouTubeチャンネルを登録します。アイテムをドラッグ＆ドロップでグループ分け・並び替えできます。</p>
+                <div class="form-grid">
+                    <input type="hidden" id="edit-channel-id">
+                    <input type="text" id="new-channel-name" placeholder="チャンネル名 (例: Google Developers)">
+                    <input type="text" id="new-channel-id" placeholder="YouTubeチャンネルIDを貼り付け">
+                    <div class="form-buttons">
+                        <button id="add-channel-btn">追加</button>
+                        <button id="cancel-edit-channel-btn" class="cancel-edit-btn hidden">キャンセル</button>
+                    </div>
+                </div>
+                <button id="add-channel-group-btn" class="add-group-btn">+ グループを追加</button>
+                
+                 <div class="list-container" id="channel-list-container">
+                    <div class="settings-group ungrouped" data-group-id="ungrouped">
+                        <div class="group-header">
+                            <h3 class="group-name">未分類のチャンネル</h3>
+                        </div>
+                        <ul class="item-list channel-item-list" data-group-id="ungrouped">
+                            </ul>
+                    </div>
+                    </div>
+            </section>
+        </div>
+    </div>
+    <script src="settings.js"></script>
+</body>
+</html>
