@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ライブスケジュール帳</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>ライブスケジュール帳</h1>
+            <a href="settings.html" class="nav-link">⚙️ 設定</a>
+            <div id="current-time" class="current-time"></div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="left-column">
+
+                <div class="container toggle-container">
+                    <button id="toggle-calendar-btn">カレンダーを開く</button>
+                </div>
+
+                <div id="calendar-wrapper" class="hidden">
+                    <div class="container calendar-container">
+                        <div id="calendar-header">
+                            <button id="prev-month-btn">&lt;</button>
+                            <h2 id="calendar-month-year"></h2>
+                            <button id="next-month-btn">&gt;</button>
+                        </div>
+                        <div id="calendar-grid"></div>
+                    </div>
+                </div>
+
+                <div id="daily-my-schedule-view" class="container">
+                    <div class="daily-header">
+                        <button id="prev-day-btn" class="day-nav-btn">&lt;</button>
+                        <h2 id="day-title"></h2>
+                        <button id="next-day-btn" class="day-nav-btn">&gt;</button>
+                    </div>
+                    <div class="schedule-list-container">
+                        <h3>マイ・スケジュール</h3>
+                        <ul id="day-my-schedule-list"></ul>
+                    </div>
+                </div>
+
+                <div class="container my-schedule-form">
+                    <h3 id="form-title">予定の登録</h3>
+                    <div class="schedule-form">
+                        <input type="hidden" id="schedule-id">
+                        <label for="schedule-date">開始日時</label>
+                        <div class="time-inputs">
+                            <input type="date" id="schedule-date" required>
+                            <input type="time" id="schedule-time" required>
+                        </div>
+                        <label for="schedule-endDate">終了日時 (任意)</label>
+                        <div class="time-inputs">
+                            <input type="date" id="schedule-endDate">
+                            <input type="time" id="schedule-endTime">
+                        </div>
+                        <label for="schedule-text">予定内容</label>
+                        <input type="text" id="schedule-text" placeholder="予定を入力してください" required>
+                        <div class="form-buttons">
+                            <button id="add-btn">登録</button>
+                            <button id="cancel-btn" class="hidden">キャンセル</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div id="daily-youtube-view" class="container">
+                     <div class="youtube-header">
+                        <h2 id="youtube-day-title">YouTube ライブ配信予定</h2>
+                        <button id="refresh-youtube-btn" title="最新の情報に更新">🔄</button>
+                    </div>
+                    <div class="schedule-list-container">
+                        <ul id="day-youtube-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div id="description-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+             <img src="" alt="サムネイル" id="modal-thumbnail" class="modal-thumbnail">
+            <h3 id="modal-title">概要</h3>
+            <p id="modal-description"></p>
+             <a href="#" id="modal-youtube-link" class="modal-button" target="_blank" rel="noopener noreferrer">YouTubeで見る</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
